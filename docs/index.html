@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Color</title>
+</head>
+<body>
+  <input type="button" value="色を変える" onclick="buttonClick()">
+  <canvas id="canvas" width="100px" height="100px"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let count = 0; // カウントによって描画する色を決める
+
+    // 描画する位置
+    let x = 20;
+    let y = 20;
+
+    // 初期値
+    ctx.fillStyle = 'red';
+    ctx.fillRect(x, y, canvas.width, canvas.height);
+
+    function buttonClick() {
+      count += 1;
+      if( count % 2 ){
+        fill('blue');
+    } else {
+        fill('red');
+    };
+  }
+    function fill(color) {
+      ctx.clearRect(x, y, canvas.width, canvas.height);
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, canvas.width, canvas.height);
+    }
+  </script>
+</body>
+</html>
